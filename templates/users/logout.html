@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+     <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your Have Been Logged Out',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <h2>You have been logged out</h2>
+    <div class="border-top pt-3">
+        <legend class="text-muted">
+            <a href="{% url 'login' %}">Log In</a>
+        </legend>
+    </div>
+{% endblock content %}

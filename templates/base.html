@@ -1,0 +1,159 @@
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+
+ <!--Scripts For Sweetify-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+          integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+            integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/main.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/static/authentication/main.css' %}">
+
+</head>
+<body>
+    <style>
+        body {
+            background-image: url("https://i.ibb.co/K92XG0b/imageedit-1-4863776685.png");
+        }
+    </style>
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'Web-Home' %}"><i class="fa">&#xf21e; Co-Vaccine</i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'Web-Home' %}"><i class="fa">&#xf015; Home</i></a>
+                    {% if user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{% url 'appointment' %}"><i class="fa">&#xf073; Book An Appointment</i></a>
+                        {% if user|has_group:'ministry' %}
+                            <a class="nav-item nav-link" href="{% url 'analytics' %}"><i class="fa fa-line-chart" aria-hidden="true"></i> Analytics</a>
+                        {% endif %}
+                        {% if user|has_group:'admin' %}
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Settings
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 12rem;">
+                                    <a class="nav-item nav-link text-dark" href="{% url 'list_all_appointments' %}"><i class="fa fa-clock-o"> Manage Appointments</i></a>
+                                    <a class="nav-item nav-link text-dark" href="{% url 'manage_working_days' %}"><i class="fa fa-clock-o"> Manage Working Days</i></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    <a class="nav-item nav-link" href="{% url 'FAQ-Page' %}"><i class="fa">&#xf27a; FAQ</i></a>
+                    <a class="nav-item nav-link" href="{% url 'About-Page' %}"><i class="fa">&#xf059; About</i></a>
+                    <a class="nav-item nav-link" href="{% url 'Contact-Page' %}"><i class="fa">&#xf1d8; Contact
+                        Us</i></a>
+                </div>
+                <!-- Navigation Bar Right Side -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{% url 'profile' %}"><i class="fa">&#xf2bd; Profile</i></a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}"><i class="fa">&#xf011; Logout</i></a>
+                    {% else %}
+
+                        <a class="nav-item nav-link" href="{% url 'login' %}"><i class="fa">&#xf13e; Login</i></a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}"><i class="fa">&#xf234; Register</i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="row">
+    <div class="col">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<footer>
+    {% block footer %}
+
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% block content %}{% endblock %}
+                </div>
+                <style>
+                    div2 {
+                        height: 200px;
+                        width: 50%;
+                        background-color: rgba(124, 110, 129, 0.47);
+                    }
+                </style>
+
+
+                <div2 class="col-md-4">
+
+                    <div class="site-header">
+                        <h3>Covid-19 Related Links</h3>
+                        <div class="list-group">
+                            <a href="https://www.gavi.org/covid19-vaccines?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq50rz2lKx8ljjNQCp0d_tGs7NV3fSRf3YQevCvtXbENNUk5io1I1a8QaAvdvEALw_wcB"
+                               class="list-group-item">COVID-19 vaccines</a>
+                            <a href="https://shareverified.com/2021/07/13/what-does-it-feel-like-to-have-covid-19/"
+                               class="list-group-item">What does it feel like to have COVID-19?</a>
+                            <a href="https://www.worldometers.info/coronavirus/"
+                               class="list-group-item">worldometers</a>
+                        </div>
+
+                    </div>
+
+
+                </div2>
+            </div>
+        </main>
+    {% endblock %}
+</footer>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

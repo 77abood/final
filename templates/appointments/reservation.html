@@ -1,0 +1,3860 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block footer %}
+    <style>
+        .floating-right-bottom-btn {
+            position: absolute;
+            right: 8px;
+            bottom: 16px;
+            botton: 16px;
+            padding: 20px;
+            cursor: pointer;
+            color: #000000;
+            background-color: rgba(159, 13, 199, 0.47);
+            border-radius: 80%;
+            position: fixed;
+        }
+
+        .floating-right-bottom-btn:hover {
+            background-color: rgba(204, 34, 34, 0.56);
+        }
+    </style>
+    <a href="{% url 'Home-Vaccine' %}" class="button">
+        <button class="floating-right-bottom-btn"><h4><i class="fa fa-ambulance"></i></h4> Home Vaccination</button>
+    </a>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Hour/Day</th>
+            <th scope="col">Sunday</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">8:00 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'8:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=8:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'8:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=8:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'8:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=8:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'8:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=8:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'8:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=8:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">8:15 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'8:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=8:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'8:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=8:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'8:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=8:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'8:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=8:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'8:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=8:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">8:30 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'8:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=8:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'8:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=8:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'8:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=8:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'8:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=8:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'8:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=8:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">8:45 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'8:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=8:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'8:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=8:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'8:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=8:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'8:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=8:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'8:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=8:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">9:00 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'9:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=9:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'9:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=9:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'9:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=9:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'9:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=9:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'9:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=9:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">9:15 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'9:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=9:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'9:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=9:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'9:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=9:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'9:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=9:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'9:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=9:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">9:30 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'9:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=9:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'9:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=9:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'9:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=9:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'9:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=9:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'9:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=9:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">9:45 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'9:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=9:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'9:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=9:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'9:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=9:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'9:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=9:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'9:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=9:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">10:00 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'10:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=10:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'10:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=10:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'10:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=10:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'10:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=10:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'10:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=10:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">10:15 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'10:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=10:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'10:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=10:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'10:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=10:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'10:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=10:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'10:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=10:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">10:30 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'10:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=10:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'10:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=10:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'10:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=10:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'10:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=10:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'10:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=10:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">10:45 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'10:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=10:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'10:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=10:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'10:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=10:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'10:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=10:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'10:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=10:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">11:00 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'11:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=11:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'11:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=11:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'11:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=11:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'11:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=11:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'11:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=11:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">11:15 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'11:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=11:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'11:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=11:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'11:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=11:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'11:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=11:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'11:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=11:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">11:30 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'11:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=11:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'11:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=11:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'11:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=11:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'11:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=11:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'11:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=11:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">11:45 AM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'11:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=11:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'11:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=11:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'11:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=11:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'11:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=11:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'11:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=11:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">12:00 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'12:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=12:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'12:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=12:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'12:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=12:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'12:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=12:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'12:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=12:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">12:15 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'12:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=12:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'12:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=12:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'12:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=12:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'12:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=12:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'12:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=12:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">12:30 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'12:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=12:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'12:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=12:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'12:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=12:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'12:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=12:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'12:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=12:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">12:45 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'12:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=12:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'12:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=12:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'12:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=12:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'12:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=12:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'12:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=12:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">1:00 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'13:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=13:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'13:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=13:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'13:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=13:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'13:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=13:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'13:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=13:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">1:15 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'13:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=13:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'13:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=13:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'13:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=13:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'13:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=13:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'13:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=13:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">1:30 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'13:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=13:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'13:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=13:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'13:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=13:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'13:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=13:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'13:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=13:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">1:45 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'13:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=13:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'13:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=13:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'13:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=13:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'13:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=13:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'13:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=13:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2:00 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'14:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=14:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'14:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=14:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'14:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=14:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'14:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=14:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'14:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=14:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2:15 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'14:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=14:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'14:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=14:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'14:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=14:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'14:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=14:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'14:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=14:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2:30 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'14:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=14:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'14:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=14:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'14:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=14:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'14:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=14:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'14:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=14:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2:45 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'14:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=14:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'14:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=14:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'14:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=14:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'14:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=14:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'14:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=14:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3:00 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'15:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=15:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'15:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=15:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'15:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=15:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'15:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=15:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'15:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=15:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3:15 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'15:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=15:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'15:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=15:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'15:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=15:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'15:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=15:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'15:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=15:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3:30 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'15:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=15:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'15:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=15:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'15:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=15:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'15:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=15:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'15:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=15:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3:45 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'15:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=15:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'15:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=15:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'15:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=15:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'15:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=15:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'15:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=15:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4:00 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'16:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=16:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'16:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=16:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'16:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=16:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'16:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=16:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'16:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=16:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4:15 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'16:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=16:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'16:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=16:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'16:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=16:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'16:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=16:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'16:15' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=16:15" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4:30 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'16:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=16:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'16:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=16:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'16:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=16:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'16:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=16:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'16:30' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=16:30" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4:45 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'16:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=16:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'16:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=16:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'16:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=16:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'16:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=16:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'16:45' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=16:45" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">5:00 PM</th>
+            <td>
+                {% with '7'|appointment_booked_at_time:'17:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=7&time=17:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '1'|appointment_booked_at_time:'17:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=1&time=17:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '2'|appointment_booked_at_time:'17:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=2&time=17:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '3'|appointment_booked_at_time:'17:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=3&time=17:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>
+                {% with '4'|appointment_booked_at_time:'17:00' as appointment %}
+                    {% if not appointment %}
+                        <a href="{% url 'book_appointment' %}?day=4&time=17:00" class="btn btn-secondary btn-sm">
+                            Empty
+                        </a>
+                    {% else %}
+                        {% if appointment.user == request.user %}
+                            <a href="{% url 'unbook_appointment' %}?ap_id={{ appointment.id }}"
+                               class="btn btn-info btn-sm">
+                                UnBook
+                            </a>
+                        {% else %}
+                            <a href="#" class="btn btn-warning btn-sm">
+                                Booked
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}
+
+
+
+

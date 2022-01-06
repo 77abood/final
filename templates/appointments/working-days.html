@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block footer %}
+
+    <section class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="fs-2 text-center mb-4">Working Days</h1>
+
+                <div class="row">
+                    {% for day in working_days %}
+                        <div class="col-12 text-center"><p class="lead border-bottom py-2 w-75 mx-auto">{{day}}</p></div>
+                    {% empty %}
+                        <div class="col-12 text-center"><p class="lead border-bottom py-2 w-75 mx-auto">No Working Days</p></div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h1 class="fs-2 text-center mb-4">Holiday</h1>
+
+                <div class="row">
+                    {% for day in holidays %}
+                        <div class="col-12 text-center"><p class="lead border-bottom py-2 w-75 mx-auto">{{day}}</p></div>
+                    {% empty %}
+                        <div class="col-12 text-center"><p class="lead border-bottom py-2 w-75 mx-auto">No Holidays</p></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block footer %}
+
+    <section class="container">
+        <h1 class="display-4 text-center mb-4">All Doctors</h1>
+        <div class="row" style="max-height: 80vh; overflow-y: scroll;">
+            <div class="col">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date Joined</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Current Holiday</th>
+                        <th scope="col">Change Holiday</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for doctor in doctors %}
+                        <tr>
+                            <th>{{doctor.date_joined.date}}</th>
+                            <td>
+                                <p>{{doctor.username|title}}</p>
+                            </td>
+                            <td>
+                                <p>{{doctor.profile.get_holiday_display}}</p>
+                            </td>
+                            <td>
+                                <form action="." method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="user_id" value="{{doctor.id}}">
+                                    {{form.holiday}}
+                                    <button type="submit" class="btn btn-success btn-sm">Change</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

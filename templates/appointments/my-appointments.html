@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block footer %}
+
+    <section class="container">
+        <h1 class="display-4 text-center mb-4">My Appointments</h1>
+        <div class="row" style="max-height: 80vh; overflow-y: scroll;">
+            <div class="col">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date Booked At</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Vaccinated</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in user.profile.get_appointments %}
+                        <tr>
+                            <th scope="row">{{appointment.date_created.date}}</th>
+                            <td>
+                                <p>{{appointment.time}}</p>
+                            </td>
+                            <td>
+                                <p>{{appointment.get_day_display}}</p>
+                            </td>
+                            <td>
+                                {% if appointment.status %}
+                                    <i class="fa fa-check text-success" aria-hidden="true"></i>
+                                {% else %}
+                                    <i class="fa fa-times text-danger" aria-hidden="true"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
+
+
+
+

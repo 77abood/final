@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    {% block footer %}
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (pos) {
+                        //You have your locaton here
+                        console.log("Latitude: " + pos.coords.latitude +
+                            "Longitude: " + pos.coords.longitude);
+                    });
+                } else {
+                    console.log("Geolocation is not supported by this browser.");
+                }
+            }
+        </script>
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Contact Form</title>
+            <link
+                    rel="stylesheet"
+                    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+                    crossorigin="anonymous"
+            />
+        </head>
+
+        <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <legend>Home Vaccination Request</legend>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInput">Name</label>
+                            <input type="text" name="subject" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInput">Email</label>
+                            <input type="text" name="message" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInput">Age</label>
+                            <input type="email" name="email" class="form-control">
+                        </div>
+                        <button onclick="getLocation()">Give Location</button>
+
+                        <a class="ml-2" href="{% url 'Web-Home' %}">Send</a>
+
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+
+        </body>
+        </html>
+
+    {% endblock footer %}
+{% endblock content %}
